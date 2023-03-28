@@ -3,6 +3,7 @@ import { setupCounter } from './counter'
 import { age, description, name } from './bases/01types'
 import { pokemons } from './bases/02Object'
 import { newPikachu } from './bases/04Inyection'
+import { charmander } from './bases/05Decorator'
 
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
@@ -13,6 +14,9 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     <div>
       ${pokemons[0].name}
       ${newPikachu.name}
+    </div>
+    <div>
+      ${charmander.name}
     </div>
 
    

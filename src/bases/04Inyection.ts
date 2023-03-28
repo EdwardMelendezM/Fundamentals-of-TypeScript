@@ -1,11 +1,11 @@
 
-import { PokeApiAdapter } from "../api/pokeApi.adapter";
+import { HttpAdapter, PokeApiAdapter, pokeApiFetch } from "../api/pokeApi.adapter";
 import { Move} from "../interfaces/pokeapi-response.interface";
 
 export class PokemonClass{
 
   constructor(public readonly id:number,
-    public name:string,private readonly http: PokeApiAdapter){
+    public name:string,private readonly http:HttpAdapter){
   }
   get imageUrl():string{
     return `https://pokemon.com/${this.id}.jpg`
@@ -17,12 +17,9 @@ export class PokemonClass{
   private scream():string{
     return `El pokeemon screamoo!`
   }
-  async getMove():Promise<Array<Move>>{
-    const data = await this.http.get('https://pokeapi.co/api/v2/pokemon/ditto')
-    return data;
-  }
-  
+
 }
-const pokeApi = new PokeApiAdapter();
-export const newPikachu = new PokemonClass(1,"pikachu",pokeApi);
-export const newPokemon = new PokemonClass(1,"pikachu",pokeApi);
+const pokeApiAxiosAdapter = new PokeApiAdapter();
+const pokeApiFetchAdapter = new pokeApiFetch();
+export const newPikachu = new PokemonClass(1,"pikachu",pokeApiAxiosAdapter);
+export const newPokemon = new PokemonClass(1,"pikachu",pokeApiFetchAdapter);

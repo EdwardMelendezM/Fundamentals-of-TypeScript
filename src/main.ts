@@ -2,7 +2,8 @@ import './style.css'
 import { setupCounter } from './counter'
 import { age, description, name } from './bases/01types'
 import { pokemons } from './bases/02Object'
-import { newPokemon } from './bases/03Class'
+import { newPikachu } from './bases/04Inyection'
+
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <div>
@@ -11,7 +12,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     ${description}
     <div>
       ${pokemons[0].name}
-      ${newPokemon.name}
+      ${newPikachu.name}
     </div>
 
    

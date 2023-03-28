@@ -1,3 +1,6 @@
+import axios from "axios";
+import { Move, PokeAPIResponse } from "../interfaces/pokeapi-response.interface";
+
 export class PokemonClass{
 
   constructor(public readonly id:number,
@@ -15,8 +18,13 @@ export class PokemonClass{
   private scream():string{
     return `El pokeemon screamoo!`
   }
-  async getMove(){
-    return 10
+  async getMove():Promise<Array<Move>>{
+    const {data} = await axios.get<PokeAPIResponse>('https://pokeapi.co/api/v2/pokemon/ditto')
+
+    return data.moves
   }
+  
+  
 }
 export const newPokemon = new PokemonClass(1,"pikachu");
+newPokemon.getMove()
